@@ -3,11 +3,11 @@ import MeetAllMortysLogo from "../images/Logo.png";
 
 function Navbar() {
   return (
-    <div className="w-full">
+    <div className="w-full bg-black">
       <img
         src={MeetAllMortysLogo}
         alt="Meet All Mortys Logo"
-        className="block m-auto"
+        className="block m-auto h-20 "
       />
     </div>
   );
