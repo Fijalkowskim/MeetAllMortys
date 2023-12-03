@@ -13,7 +13,7 @@ interface CardsContextProviderProps {
   children: ReactNode;
 }
 interface CardsContext {
-  getRandomCards: (amount: number) => Promise<CardData[] | null>;
+  randomCards: CardData[];
 }
 const CardsContext = createContext({} as CardsContext);
 
@@ -24,42 +24,42 @@ export function useCardsContext() {
 export function CardsContextProvider({ children }: CardsContextProviderProps) {
   const [randomCards, setRandomCards] = useState<CardData[]>([]);
 
-  const getRandomCards = async (amount: number) => {
-    try {
-      const charactersAmountResponse = await axios.get(
-        "https://rickandmortyapi.com/api/character"
-      );
-      const charactersAmount = charactersAmountResponse.data.info.count;
+  useEffect(() => {
+    axios
+      .get("https://rickandmortyapi.com/api/character")
+      .then((res) => {
+        const charactersAmount = res.data.info.count;
 
-      const ids = GetRandomNumbers(amount, 1, charactersAmount);
-      if (ids === undefined) return null;
+        const ids = GetRandomNumbers(5, 1, charactersAmount);
+        if (ids === undefined) return null;
+        const requests = ids.map((id) =>
+          axios.get(`https://rickandmortyapi.com/api/character/${id}`)
+        );
 
-      const newCards = await Promise.all(
-        ids.map(async (id) => {
-          const characterResponse = await axios.get(
-            `https://rickandmortyapi.com/api/character/${id}`
-          );
+        Promise.all(requests)
+          .then((responses) => {
+            const newCards: CardData[] = responses.map((res) => ({
+              id: res.data.id,
+              name: res.data.name,
+              species: res.data.species,
+              image: res.data.image,
+            }));
+            setRandomCards(newCards);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-          const newCard: CardData = {
-            id: id,
-            name: characterResponse.data.name,
-            species: characterResponse.data.species,
-            image: characterResponse.data.image,
-          };
-
-          return newCard;
-        })
-      );
-
-      setRandomCards(newCards);
-      return newCards;
-    } catch (error) {
-      console.error("Error while fetching random cards:", error);
-      return null;
-    }
+  const getRandomCards = () => {
+    return randomCards;
   };
   return (
-    <CardsContext.Provider value={{ getRandomCards }}>
+    <CardsContext.Provider value={{ randomCards }}>
       {children}
     </CardsContext.Provider>
   );
