@@ -42,6 +42,7 @@ export function CardsContextProvider({ children }: CardsContextProviderProps) {
               id: res.data.id,
               name: res.data.name,
               species: res.data.species,
+              location: res.data.location.name,
               image: res.data.image,
             }));
             setRandomCards(newCards);
