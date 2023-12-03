@@ -6,3 +6,19 @@
   font-family: "Get Schwifty";
   src: url("../public/fonts/get_schwifty.ttf");
 }
+body {
+  background-image: url(./images/tile-background.jpg);
+}
+body::after {
+  @apply absolute inset-0;
+  content: "";
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.15) 25%,
+    rgba(255, 255, 255, 0.15) 75%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  z-index: -1;
+}
