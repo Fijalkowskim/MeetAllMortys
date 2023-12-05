@@ -9,7 +9,7 @@ function Cards() {
   return (
     <motion.ul
       layout
-      className="flex mx-auto w-fit gap-4 font-futuristic justify-center"
+      className="flex mx-auto w-fit font-futuristic justify-center"
     >
       {randomCards.map((card, i) => (
         <Card key={card.id} data={card} index={i - 2} />

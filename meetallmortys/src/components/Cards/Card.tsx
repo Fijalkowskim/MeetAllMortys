@@ -10,11 +10,19 @@ interface Props {
 function Card({ data, index }: Props) {
   return (
     <motion.div
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
+      initial={{ scale: 0, opacity: 0, rotate: 0, y: 0 }}
+      animate={{
+        scale: 1 - Math.abs(index) * 0.1,
+        opacity: 1,
+        rotate: index * 15,
+        y: Math.abs(index) * 50,
+      }}
       layout
       className={`pb-4 bg-neutral-200 rounded-3xl flex flex-col items-center w-72
-      overflow-hidden shadow-slate-950 shadow-md border-zinc-900 border-2`}
+      overflow-hidden shadow-slate-950 shadow-md border-zinc-900 border-2 relative origin-center`}
+      style={{
+        zIndex: index == 0 ? 5 : index == 2 || index == -2 ? 3 : 4,
+      }}
     >
       <img src={data.image} alt="" className="rounded-b-full shadow-md" />
       <p className="text-3xl text-center h-[72px] text-ellipsis overflow-hidden">
