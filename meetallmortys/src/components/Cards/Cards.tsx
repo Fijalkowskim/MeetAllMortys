@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useCardsContext } from "../../context/CardsContext";
 import Card from "./Card";
 import { CardData } from "../../model/CardData";
-import { motion } from "framer-motion";
+import { motion, useAnimate, useAnimation } from "framer-motion";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 function Cards() {
   const { randomCards, shiftCards } = useCardsContext();
   const [canShiftCards, setCanShiftCards] = useState(true);
   const [cardShiftTime, setCardShiftTime] = useState(0.5);
+  const [isCardsLabelHovered, setIsCardsLabelHovered] = useState(false);
+  const charactersSpanControlls = useAnimation();
 
   const handleShiftCards = (next: boolean) => {
     if (!canShiftCards) return;
@@ -18,11 +20,50 @@ function Cards() {
       setCanShiftCards(true);
     }, cardShiftTime * 1000);
   };
+
+  useEffect(() => {
+    if (isCardsLabelHovered) {
+      charactersSpanControlls.start("hover");
+    } else {
+      charactersSpanControlls.start("normal");
+    }
+  }, [isCardsLabelHovered]);
+
   return (
     <div className="flex flex-col items-center ">
-      <motion.h1 className="bg-neutral-200 text-5xl py-4 px-6 border-2 border-black mb-6 rounded-full">
-        Your 5 random character cards
-      </motion.h1>
+      <motion.button
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        whileHover={{
+          scale: 1.02,
+          transition: { ease: "easeOut" },
+        }}
+        onHoverStart={() => setIsCardsLabelHovered(true)}
+        onHoverEnd={() => setIsCardsLabelHovered(false)}
+        onClick={() => {
+          /*Implement tab switch*/
+        }}
+        transition={{ ease: "circOut", duration: 0.5 }}
+        className="standard-border py-4 px-10  mb-6 rounded-full"
+      >
+        <h1 className="text-5xl">Your 5 random character cards</h1>
+        <p className="text-center text-xl">
+          Want to see more? Check{" "}
+          <motion.span
+            variants={{
+              normal: { color: "initial" },
+              hover: { color: "red" },
+            }}
+            initial="normal"
+            animate={charactersSpanControlls}
+            transition={{ duration: 10 }}
+          >
+            characters
+          </motion.span>{" "}
+          tab.
+        </p>
+      </motion.button>
+
       <motion.ul
         layout
         className="flex mx-auto w-fit font-futuristic justify-center mb-4"
@@ -52,7 +93,7 @@ function Cards() {
           whileTap={{
             scale: 0.9,
           }}
-          className="text-6xl bg-neutral-200 px-4 rounded-full border-2 border-black shadow-md cursor-pointer text-center"
+          className="standard-border text-6xl px-4 rounded-full cursor-pointer text-center"
           onClick={() => handleShiftCards(false)}
         >
           <FaAngleLeft />
@@ -72,7 +113,7 @@ function Cards() {
           whileTap={{
             scale: 0.9,
           }}
-          className="text-6xl bg-neutral-200 px-4 rounded-full border-2 border-black shadow-md cursor-pointer text-center"
+          className="standard-border text-6xl px-4 rounded-full cursor-pointer text-center"
           onClick={() => handleShiftCards(true)}
         >
           <FaAngleRight />

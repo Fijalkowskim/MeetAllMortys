@@ -6,7 +6,7 @@ import { CardsContextProvider } from "./context/CardsContext";
 
 function App() {
   return (
-    <div className="font-rick ">
+    <div className="font-primary">
       <Navbar />
       <CardsContextProvider>
         <Cards />

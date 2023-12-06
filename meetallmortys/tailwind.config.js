@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         rick: ["Get Schwifty", "sans-serif"],
         futuristic: ["Nova Square", "sans-serif"],
+        primary: ["Jura", "sans-serif"],
       },
       backgroundImage: {
         background: "url('/src/images/tile-background.jpg')",

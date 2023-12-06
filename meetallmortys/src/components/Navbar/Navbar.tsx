@@ -11,7 +11,7 @@ function Navbar() {
         alt="Meet All Mortys Logo"
         className="absolute rounded-full max-w-none h-32"
       /> */}
-      <ul className="w-fit mx-auto bg-neutral-200 shadow-lg px-12 py-2 flex gap-24 items-center justify-center rounded-bl-full rounded-br-full border-zinc-900 border-2 border-t-0">
+      <ul className="w-fit mx-auto px-12 py-2 flex gap-24 items-center justify-center rounded-bl-full rounded-br-full standard-border border-t-0">
         <NavbarButton text={"Home"} route={"/"} />
         <NavbarButton text={"Characters"} route={"/"} />
         <NavbarButton text={"Places"} route={"/"} />

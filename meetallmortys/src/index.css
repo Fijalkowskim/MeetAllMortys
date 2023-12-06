@@ -6,6 +6,13 @@
   font-family: "Get Schwifty";
   src: url("../public/fonts/get_schwifty.ttf");
 }
+
+@layer components {
+  .standard-border {
+    @apply bg-neutral-200 border-2 border-black mb-6 shadow-md;
+  }
+}
+
 body {
   background-image: url(./images/tile-background.jpg);
 }
