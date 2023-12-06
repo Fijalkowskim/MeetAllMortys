@@ -19,7 +19,10 @@ function Cards() {
     }, cardShiftTime * 1000);
   };
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center ">
+      <motion.h1 className="bg-neutral-200 text-5xl py-4 px-6 border-2 border-black mb-6 rounded-full">
+        Your 5 random character cards
+      </motion.h1>
       <motion.ul
         layout
         className="flex mx-auto w-fit font-futuristic justify-center mb-4"
