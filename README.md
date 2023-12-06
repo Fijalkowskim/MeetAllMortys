@@ -1,10 +1,15 @@
-# Meet All Mortys
+<h1 align="center">Work in progress...</h1>
+<div align="center" >
+  <img src="https://github.com/Fijalkowskim/MeetAllMortys/assets/91847461/57b23169-2612-4eff-a57a-14649e8d9a81" alt="MeetAllMortysLogo" style="width: 100% heigh: 200px;" >
+</div>
+  
 
-![MeetAllMortysLogo](https://github.com/Fijalkowskim/MeetAllMortys/assets/91847461/123201c7-8c92-4917-81f0-31f8ac9b323c)
+![image](https://github.com/Fijalkowskim/MeetAllMortys/assets/91847461/305fa059-330c-493d-9920-f6f8d9285992)
+
 
 ## Project Description
 
-"Meet All Mortys" is an application built in React.js and styled with Tailwind CSS to provide a user-friendly interface. This project allows users to explore characters, locations, and other elements from the popular TV show "Rick and Morty" by utilizing the public API provided by [Rick and Morty API](https://rickandmortyapi.com/).
+"Meet All Mortys" is an application built with React, TypeScript, Tailwind CSS, and Framer-Motion to provide a user-friendly interface. This project allows users to explore characters, locations, and other elements from the popular TV show "Rick and Morty" by utilizing the public API provided by [Rick and Morty API](https://rickandmortyapi.com/).
 
 ## Features
 
@@ -16,12 +21,10 @@
 
 ## Technologies Used
 
-- **React.js:** The project is built using the React.js library, providing a robust and efficient front-end framework for seamless user interactions.
+- **React:** The project is built using the React.js library, providing a robust and efficient front-end framework for seamless user interactions.
+
+- **TypeScript:** TypeScript is used to ensure type safety in the codebase, enhancing the overall reliability of the application.
 
 - **Tailwind CSS:** Tailwind CSS is employed for styling, allowing for a clean and responsive design. It enhances the visual appeal of the application while maintaining flexibility.
 
-## How to Use
-
-To explore the diverse characters and locations from "Rick and Morty," simply visit the [Meet All Mortys](link_to_live_app) application or clone the repository and run it locally.
-
-Feel free to contribute, report issues, or suggest improvements. Let's make "Meet All Mortys" the ultimate resource for fans of the "Rick and Morty" universe!
+- **Framer-Motion:** Framer-Motion, an amazing animation library, is utilized to provide satisfying and seamless animations throughout the application.
