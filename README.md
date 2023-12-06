@@ -4,7 +4,8 @@
 </div>
   
 
-![image](https://github.com/Fijalkowskim/MeetAllMortys/assets/91847461/305fa059-330c-493d-9920-f6f8d9285992)
+![image](https://github.com/Fijalkowskim/MeetAllMortys/assets/91847461/ae8c55a3-77f0-4ea7-a106-ae8317ecfb44)
+
 
 
 ## Project Description
