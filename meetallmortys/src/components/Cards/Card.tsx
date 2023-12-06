@@ -6,16 +6,19 @@ import { transform } from "typescript";
 interface Props {
   data: CardData;
   index: number;
+  transitionTime: number;
 }
-function Card({ data, index }: Props) {
+function Card({ data, index, transitionTime }: Props) {
   return (
     <motion.div
-      initial={{ scale: 0, opacity: 0, rotate: 0, y: 0 }}
+      transition={{ duration: transitionTime, type: "spring" }}
+      initial={{ scale: 0, opacity: 0, rotate: 0, y: 0, x: 0 }}
       animate={{
-        scale: 1 - Math.abs(index) * 0.1,
-        opacity: 1,
+        scale: 1 - Math.abs(index) * 0.2,
+        opacity: 1 - Math.abs(index) * 0.2,
         rotate: index * 15,
         y: Math.abs(index) * 50,
+        x: -index * 70,
       }}
       layout
       className={`pb-4 bg-neutral-200 rounded-3xl flex flex-col items-center w-72
