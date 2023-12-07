@@ -17,6 +17,8 @@ body {
   position: relative;
   background-image: url(./images/tile-background.jpg);
   height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 body::after {
   position: absolute;
