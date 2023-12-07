@@ -20,9 +20,10 @@ function Card({ data, index, transitionTime }: Props) {
         y: Math.abs(index) * 50,
         x: -index * 70,
       }}
+      whileHover={{ scale: index === 0 ? 1.03 : 1 - Math.abs(index) * 0.2 }}
       layout
       className={`pb-4 bg-neutral-200 rounded-3xl flex flex-col items-center w-72
-      overflow-hidden shadow-slate-950 shadow-md border-zinc-900 border-2 relative origin-center`}
+      overflow-hidden shadow-slate-950 shadow-md border-zinc-900 border-2 relative origin-center cursor-pointer`}
       style={{
         zIndex: index == 0 ? 5 : index == 2 || index == -2 ? 3 : 4,
       }}
