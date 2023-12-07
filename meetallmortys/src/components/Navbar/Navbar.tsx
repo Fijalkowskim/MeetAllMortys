@@ -4,7 +4,7 @@ import NavbarButton from "./NavbarButton";
 
 function Navbar() {
   return (
-    <nav className="sticky top-0 mb-8 ">
+    <nav className="fixed top-0 left-0 right-0 z-50">
       {/* <div className="absolute aspect-square bg-white rounded-full h-[16rem] translate-x-[-30%] translate-y-[-40%] shadow-md" />
       <img
         src={MeetAllMortysLogo}

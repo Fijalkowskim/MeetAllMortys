@@ -14,10 +14,15 @@
 }
 
 body {
+  position: relative;
   background-image: url(./images/tile-background.jpg);
+  height: 100%;
 }
 body::after {
-  @apply absolute inset-0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   content: "";
   background: rgb(255, 255, 255);
   background: linear-gradient(
@@ -27,5 +32,5 @@ body::after {
     rgba(255, 255, 255, 0.15) 75%,
     rgba(255, 255, 255, 0.1) 100%
   );
-  z-index: -1;
+  z-index: -10;
 }
