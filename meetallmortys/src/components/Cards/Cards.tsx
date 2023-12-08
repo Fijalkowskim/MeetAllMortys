@@ -30,7 +30,7 @@ function Cards() {
   }, [isCardsLabelHovered]);
 
   return (
-    <div className="flex flex-col items-center min-h-[90vh]">
+    <div className="flex flex-col items-center min-h-[90vh]" id="cards">
       <motion.button
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}

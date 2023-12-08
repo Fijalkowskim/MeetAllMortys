@@ -3,6 +3,7 @@ import RickImage from "../../images/rick.png";
 import MortyImage from "../../images/morty.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import SectionButton from "../Sections/SectionButton";
 
 function HeroSection() {
   const targetRef = useRef(null);
@@ -49,6 +50,7 @@ function HeroSection() {
           rotateZ: rickRot,
         }}
       />
+      <SectionButton />
     </div>
   );
 }
