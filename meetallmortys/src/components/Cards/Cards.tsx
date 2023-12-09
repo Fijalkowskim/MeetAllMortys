@@ -9,8 +9,6 @@ function Cards() {
   const { randomCards, shiftCards } = useCardsContext();
   const [canShiftCards, setCanShiftCards] = useState(true);
   const [cardShiftTime, setCardShiftTime] = useState(0.5);
-  const [isCardsLabelHovered, setIsCardsLabelHovered] = useState(false);
-  const charactersSpanControlls = useAnimation();
 
   //Reveal animation
   const ref = useRef(null);
@@ -31,15 +29,6 @@ function Cards() {
       setCanShiftCards(true);
     }, cardShiftTime * 1000);
   };
-
-  useEffect(() => {
-    if (isCardsLabelHovered) {
-      charactersSpanControlls.start("hover");
-    } else {
-      charactersSpanControlls.start("normal");
-    }
-  }, [isCardsLabelHovered]);
-
   return (
     <motion.div
       className="flex flex-col items-center min-h-[100vh] pt-20"
@@ -60,26 +49,16 @@ function Cards() {
           scale: 1.02,
           transition: { ease: "easeOut" },
         }}
-        onHoverStart={() => setIsCardsLabelHovered(true)}
-        onHoverEnd={() => setIsCardsLabelHovered(false)}
         onClick={() => {
           /*Implement tab switch*/
         }}
         transition={{ ease: "circOut", duration: 0.5 }}
-        className="standard-border py-4 px-10  mb-6 rounded-full"
+        className="standard-border py-4 px-10  mb-6 rounded-full group"
       >
         <h1 className="text-5xl">Your 5 random character cards</h1>
         <p className="text-center text-xl">
           Want to see more? Check{" "}
-          <motion.span
-            variants={{
-              normal: { color: "initial" },
-              hover: { color: "red" },
-            }}
-            initial="normal"
-            animate={charactersSpanControlls}
-            transition={{ duration: 10 }}
-          >
+          <motion.span className="group-hover:text-action-500">
             characters
           </motion.span>{" "}
           tab.
