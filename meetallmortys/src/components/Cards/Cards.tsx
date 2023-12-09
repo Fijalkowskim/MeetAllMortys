@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useCardsContext } from "../../context/CardsContext";
 import Card from "./Card";
 import { CardData } from "../../model/CardData";
-import { motion, useAnimate, useAnimation } from "framer-motion";
+import { motion, useAnimate, useAnimation, useInView } from "framer-motion";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 function Cards() {
@@ -11,6 +11,17 @@ function Cards() {
   const [cardShiftTime, setCardShiftTime] = useState(0.5);
   const [isCardsLabelHovered, setIsCardsLabelHovered] = useState(false);
   const charactersSpanControlls = useAnimation();
+
+  //Reveal animation
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const revealControlls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      revealControlls.start("visible");
+    }
+  }, [isInView]);
 
   const handleShiftCards = (next: boolean) => {
     if (!canShiftCards) return;
@@ -30,7 +41,18 @@ function Cards() {
   }, [isCardsLabelHovered]);
 
   return (
-    <div className="flex flex-col items-center min-h-[90vh]" id="cards">
+    <motion.div
+      className="flex flex-col items-center min-h-[100vh] pt-20"
+      id="cards"
+      ref={ref}
+      variants={{
+        hidden: { opacity: 0, y: -50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      initial="hidden"
+      animate={revealControlls}
+      transition={{ duration: 1, delay: 0.1, ease: "easeInOut" }}
+    >
       <motion.button
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
@@ -119,7 +141,7 @@ function Cards() {
           <FaAngleRight />
         </motion.button>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

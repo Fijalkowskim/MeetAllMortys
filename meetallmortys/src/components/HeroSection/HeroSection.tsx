@@ -16,7 +16,7 @@ function HeroSection() {
   const scrollScale = useTransform(scrollYProgress, [0, 1], ["1", "0.3"]);
 
   return (
-    <div className="relative flex items-center w-full justify-center min-h-[100vh]">
+    <div className="relative flex items-center w-full justify-center min-h-[100vh] mb-20">
       <motion.div
         className="standard-border text-5xl w-1/3 p-6 grid place-content-center text-center h-fit rounded-2xl tracking-tighter"
         style={{ opacity: scrollOpacity, scale: scrollScale }}
