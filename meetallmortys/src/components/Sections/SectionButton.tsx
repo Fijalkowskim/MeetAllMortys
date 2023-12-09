@@ -1,8 +1,12 @@
 import React from "react";
 import { FaAnglesDown } from "react-icons/fa6";
-import { motion } from "framer-motion";
+import { MotionValue, motion } from "framer-motion";
 
-function SectionButton() {
+interface Props {
+  opacity: MotionValue<string>;
+}
+
+function SectionButton({ opacity }: Props) {
   const scrollToCards = () => {
     const cardsSection = document.getElementById("cards");
     if (cardsSection) {
@@ -20,6 +24,9 @@ function SectionButton() {
         duration: 1.5,
         times: [0, 0.5, 1],
         ease: "backInOut",
+      }}
+      style={{
+        opacity: opacity,
       }}
     >
       <FaAnglesDown />

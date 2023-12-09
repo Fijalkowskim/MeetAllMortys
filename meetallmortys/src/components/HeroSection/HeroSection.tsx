@@ -50,7 +50,7 @@ function HeroSection() {
           rotateZ: rickRot,
         }}
       />
-      <SectionButton />
+      <SectionButton opacity={scrollOpacity} />
     </div>
   );
 }
