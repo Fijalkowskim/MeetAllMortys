@@ -6,6 +6,7 @@ import {
     useEffect,
   } from "react";
   import axios from "axios";
+  import { CharacterData } from "../model/CharacterData";
   
   interface CharactersContextProviderProps {
     children: ReactNode;
