@@ -12,7 +12,8 @@ import {
     children: ReactNode;
   }
   interface CharactersContext {
-
+    characters: CharacterData[] | undefined;
+    loadCharacters: (page: number) => void;
   }
   const CharactersContext = createContext({} as CharactersContext);
   
@@ -21,8 +22,18 @@ import {
   }
   
   export function CharactersContextProvider({ children }: CharactersContextProviderProps) {
+    const [characters, setCharacters] = useState<CharacterData[]>();
+    const loadCharacters = (page: number) => {
+      //setCharacters([]);
+        axios
+        .get(`https://rickandmortyapi.com/api/character/?page=${page}`)
+        .then((res) => {
+          console.log(res.data);
+        })
+        
+    } 
     return (
-      <CharactersContext.Provider value={{}}>
+      <CharactersContext.Provider value={{characters,loadCharacters}}>
         {children}
       </CharactersContext.Provider>
     );
