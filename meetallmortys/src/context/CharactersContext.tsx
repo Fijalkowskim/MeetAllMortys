@@ -24,14 +24,25 @@ import {
   export function CharactersContextProvider({ children }: CharactersContextProviderProps) {
     const [characters, setCharacters] = useState<CharacterData[]>();
     const loadCharacters = (page: number) => {
-      //setCharacters([]);
-        axios
+      setCharacters([]);
+      axios
         .get(`https://rickandmortyapi.com/api/character/?page=${page}`)
-        .then((res) => {
-          console.log(res.data);
+        .then((response: { data?: { results?: any[] } }) => {
+          const loadedCharacters: CharacterData[] = (response.data?.results || []).map((res: any) => ({
+            id: res.id,
+            name: res.name,
+            status: res.status,
+            species: res.species,
+            image: res.image,
+            gender: res.gender,
+            from: res.origin.name
+          }));
+          setCharacters(loadedCharacters);
         })
-        
-    } 
+        .catch((err) => {
+          console.error(err);
+        });
+    };
     return (
       <CharactersContext.Provider value={{characters,loadCharacters}}>
         {children}

@@ -6,9 +6,13 @@ function CharactersDisplay() {
     useEffect(()=>{
         loadCharacters(1);
     },[])
-  return (
-    <div>CharactersDisplay</div>
-  )
+    return (
+        <div>
+          {characters?.map((char, idx) => (
+            <div key={idx}>{char.name}</div>
+          ))}
+        </div>
+      );
 }
 
 export default CharactersDisplay
