@@ -22,10 +22,10 @@ function CharacterCard({ data }: Props) {
           },
           whileHover: {
             scale: 1.05,
-            borderRadius: 100,
+            borderRadius: 110,
           },
         }}
-        transition={{ type: "spring" }}
+        transition={{ type: "spring", mass: 0.9, stiffness: 90 }}
         className="aspect-square h-70 object-cover object-center content-center border-4 border-white z-10"
       />
       <motion.h1
@@ -44,6 +44,7 @@ function CharacterCard({ data }: Props) {
         style={{
           position: "absolute",
           top: "50%",
+          maxWidth: "90%",
         }}
         transition={{ type: "spring", damping: 14 }}
       >
