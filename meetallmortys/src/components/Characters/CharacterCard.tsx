@@ -10,7 +10,7 @@ function CharacterCard({ data }: Props) {
     <motion.div
       animate="animate"
       whileHover="whileHover"
-      className=" cursor-pointer flex flex-col items-center font-futuristic relative mb-20"
+      className=" cursor-pointer flex flex-col items-center font-futuristic relative mb-28"
     >
       <motion.img
         src={data.image}
@@ -29,7 +29,7 @@ function CharacterCard({ data }: Props) {
         className="aspect-square h-70 object-cover object-center content-center border-4 border-white z-10"
       />
       <motion.h1
-        className={`bg-white text-black px-4 rounded-xl text-center py-1 my-4 ${
+        className={`bg-white text-black px-4 rounded-xl text-center pt-20 pb-1 my-4 ${
           data.name.length >= 16 ? "text-2xl" : "text-4xl"
         }`}
         variants={{
@@ -38,14 +38,14 @@ function CharacterCard({ data }: Props) {
           },
           whileHover: {
             opacity: 1,
-            y: 150,
+            y: 80,
           },
         }}
         style={{
           position: "absolute",
           top: "50%",
         }}
-        transition={{ type: "spring" }}
+        transition={{ type: "spring", damping: 14 }}
       >
         {data.name}
       </motion.h1>

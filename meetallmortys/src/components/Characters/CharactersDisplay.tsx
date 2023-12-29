@@ -9,7 +9,7 @@ function CharactersDisplay() {
     loadCharacters(1);
   }, []);
   return (
-    <motion.div className="flex flex-wrap gap-x-6 w-full py-20 px-6 mx-auto justify-center cursor pointer">
+    <motion.div className="flex flex-wrap gap-x-12 w-full py-20 px-4 mx-auto justify-center cursor pointer">
       {characters?.map((char) => (
         <CharacterCard key={char.id} data={char} />
       ))}
