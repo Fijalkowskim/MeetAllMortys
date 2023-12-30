@@ -8,6 +8,7 @@ interface Props {
 function CharacterCard({ data }: Props) {
   return (
     <motion.div
+      initial="initial"
       animate="animate"
       whileHover="whileHover"
       className=" cursor-pointer flex flex-col items-center font-futuristic relative mb-28"
@@ -16,6 +17,10 @@ function CharacterCard({ data }: Props) {
         src={data.image}
         alt={data.name}
         variants={{
+          initial: {
+            scale: 1,
+            borderRadius: 200,
+          },
           animate: {
             scale: 1,
             borderRadius: 200,
@@ -33,6 +38,9 @@ function CharacterCard({ data }: Props) {
           data.name.length >= 16 ? "text-2xl" : "text-4xl"
         }`}
         variants={{
+          initial: {
+            opacity: 0,
+          },
           animate: {
             opacity: 0,
           },
