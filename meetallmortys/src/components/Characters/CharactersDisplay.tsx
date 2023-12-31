@@ -6,10 +6,10 @@ import PageSwitchPanel from "./PageSwitchPanel";
 interface Props {
   currentPage: number;
 }
-function CharactersDisplay() {
+function CharactersDisplay({ currentPage }: Props) {
   const { characters, loadCharacters } = useCharactersContext();
   useEffect(() => {
-    loadCharacters(1);
+    loadCharacters(currentPage);
   }, []);
   return (
     <>
@@ -18,7 +18,7 @@ function CharactersDisplay() {
           <CharacterCard key={char.id} data={char} />
         ))}
       </motion.div>
-      <PageSwitchPanel />
+      <PageSwitchPanel currentPage={currentPage} numberOfPages={} />
     </>
   );
 }
