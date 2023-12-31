@@ -3,7 +3,9 @@ import { useCharactersContext } from "../../context/CharactersContext";
 import CharacterCard from "./CharacterCard";
 import { motion } from "framer-motion";
 import PageSwitchPanel from "./PageSwitchPanel";
-
+interface Props {
+  currentPage: number;
+}
 function CharactersDisplay() {
   const { characters, loadCharacters } = useCharactersContext();
   useEffect(() => {
