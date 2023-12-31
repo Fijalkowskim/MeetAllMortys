@@ -2,7 +2,7 @@ import React from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 interface Props {
-  numberOfPages: number;
+  numberOfPages: number | undefined;
   currentPage: number;
 }
 function PageSwitchPanel({ numberOfPages, currentPage }: Props) {

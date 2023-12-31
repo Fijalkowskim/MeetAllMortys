@@ -3,13 +3,10 @@ import { useCharactersContext } from "../../context/CharactersContext";
 import CharacterCard from "./CharacterCard";
 import { motion } from "framer-motion";
 import PageSwitchPanel from "./PageSwitchPanel";
-interface Props {
-  currentPage: number;
-}
-function CharactersDisplay({ currentPage }: Props) {
-  const { characters, loadCharacters } = useCharactersContext();
+function CharactersDisplay() {
+  const { characters, loadCharacters, pageData } = useCharactersContext();
   useEffect(() => {
-    loadCharacters(currentPage);
+    loadCharacters(1);
   }, []);
   return (
     <>
@@ -18,7 +15,7 @@ function CharactersDisplay({ currentPage }: Props) {
           <CharacterCard key={char.id} data={char} />
         ))}
       </motion.div>
-      <PageSwitchPanel currentPage={currentPage} numberOfPages={} />
+      <PageSwitchPanel currentPage={1} numberOfPages={pageData?.pages} />
     </>
   );
 }
